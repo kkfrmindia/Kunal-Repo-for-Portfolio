@@ -1,0 +1,1255 @@
+Enter password: *************
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 18
+Server version: 8.0.39 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+6 rows in set (0.01 sec)
+
+mysql> CREATE DATABASE KUNAL;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> CREATE DATABASE IF NOT EXIT KUNAL;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'EXIT KUNAL' at line 1
+mysql> CREATE DATABASE IF NOT EXIT KONIKA;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'EXIT KONIKA' at line 1
+mysql> CREATE DATABASE IF NOT EXITS KONIKA;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'EXITS KONIKA' at line 1
+mysql> CREATE DATABASE IF NOT EXITS KUNAL;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'EXITS KUNAL' at line 1
+mysql> CREATE DATABASE IF NOT EXISTS KUNAL;
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| kunal              |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+7 rows in set (0.00 sec)
+
+mysql> CREATE DATABASE IF NOT EXISTS KONIKA;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| konika             |
+| kunal              |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+8 rows in set (0.00 sec)
+
+mysql> DROP DATABASE KUNAL;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| konika             |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+7 rows in set (0.00 sec)
+
+mysql> CREATE DATABASE IF NOT EXISTS KUNAL;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> show DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| konika             |
+| kunal              |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+8 rows in set (0.00 sec)
+
+mysql> USE KUNAL;
+Database changed
+mysql> CREATE DATABASE IF NOT EXISTS HIT;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> USE HIT;
+Database changed
+mysql> USE HIT;
+Database changed
+mysql> USE HIT;
+Database changed
+mysql> CREATE TABLE DEPARTMENTS (FIRSTNAME VARCHAR(30), LASTNAME VARCHAR(30), DOE DATE, HOD VARCHAR(30), HOD GENDER ENUM('MALE', 'FEMALE', 'TRANSGENDER'), TOTAL STUDENTS DECIMAL);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'GENDER ENUM('MALE', 'FEMALE', 'TRANSGENDER'), TOTAL STUDENTS DECIMAL)' at line 1
+mysql> CREATE TABLE DEPARTMENTS (FIRSTNAME VARCHAR(30), LASTNAME VARCHAR(30), DOE DATE, HOD VARCHAR(30), HOD GENDER ENUM ('MALE', 'FEMALE', 'TRANSGE
+NDER'), TOTAL STUDENTS DECIMAL );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'GENDER ENUM ('MALE', 'FEMALE', 'TRANSGENDER'), TOTAL STUDENTS DECIMAL )' at line 1
+mysql> CREATE TABLE DEPARTMENTS (FIRSTNAME VARCHAR(30), LASTNAME VARCHAR(30), DOE DATE, HOD VARCHAR(30), HOD GENDER ENUM ('MALE', 'FEMALE', 'TRANSGE
+NDER') NOT NULL, TOTAL STUDENTS DECIMAL);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'GENDER ENUM ('MALE', 'FEMALE', 'TRANSGENDER') NOT NULL, TOTAL STUDENTS DECIMAL)' at line 1
+mysql> CREATE TABLE DEPARTMENTS (FIRSTNAME VARCHAR(30), LASTNAME VARCHAR(30), DOE DATE, HOD VARCHAR(30), HOD_GENDER ENUM ('MALE', 'FEMALE', 'TRANSGE
+NDER'), TOTAL_STUDENTS DECIMAL );
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> show tables;
++---------------+
+| Tables_in_hit |
++---------------+
+| departments   |
++---------------+
+1 row in set (0.01 sec)
+
+mysql> desc departments;
++----------------+-------------------------------------+------+-----+---------+-------+
+| Field          | Type                                | Null | Key | Default | Extra |
++----------------+-------------------------------------+------+-----+---------+-------+
+| FIRSTNAME      | varchar(30)                         | YES  |     | NULL    |       |
+| LASTNAME       | varchar(30)                         | YES  |     | NULL    |       |
+| DOE            | date                                | YES  |     | NULL    |       |
+| HOD            | varchar(30)                         | YES  |     | NULL    |       |
+| HOD_GENDER     | enum('MALE','FEMALE','TRANSGENDER') | YES  |     | NULL    |       |
+| TOTAL_STUDENTS | decimal(10,0)                       | YES  |     | NULL    |       |
++----------------+-------------------------------------+------+-----+---------+-------+
+6 rows in set (0.01 sec)
+
+mysql> describe departments;
++----------------+-------------------------------------+------+-----+---------+-------+
+| Field          | Type                                | Null | Key | Default | Extra |
++----------------+-------------------------------------+------+-----+---------+-------+
+| FIRSTNAME      | varchar(30)                         | YES  |     | NULL    |       |
+| LASTNAME       | varchar(30)                         | YES  |     | NULL    |       |
+| DOE            | date                                | YES  |     | NULL    |       |
+| HOD            | varchar(30)                         | YES  |     | NULL    |       |
+| HOD_GENDER     | enum('MALE','FEMALE','TRANSGENDER') | YES  |     | NULL    |       |
+| TOTAL_STUDENTS | decimal(10,0)                       | YES  |     | NULL    |       |
++----------------+-------------------------------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> CREATE TABLE IF NOT EXISTS DEPARTMENTS ( ID INT AUTO INCREMENT, FIR
+STNAME VARCHAR(30) NOT NULL, LASTNAME VARCHAR(30), DOE DATE DEFAULT 'UNKNOWN', HOD VARCHAR(30), HOD GENDER ENUM ('MALE', 'FEMALE', 'TRANSGENDER') NOT NULL,TOTAL STUDENTS DECIMAL, PRIMARY KEY (ID));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AUTO INCCREATE TABLE IF NOT EXISTS DEPARTMENTS ( ID INT AUTO INCREMENT, FIRATE D' at line 1
+ VARCHAR(30), HOD GENDER ENUM ('MALE', 'FEMALE', 'TRANSGENDER') NOT NULL, STNAME VARCHAR(30) NOT NULL, LASTNAME VARCHAR(30), DOE DATE DEFAULT 'UNKNOWN', HOD
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AUTO INCREMENT, FIRSTNAME VARCHAR(30) NOT NULL, LASTNAME VARCHAR(30), DOE DATE D' at line 1
+mysql> CREATE TABLE IF NOT EXISTS DEPARTMENTS ( ID INT AUTO INCREMENT, FIRSTNAME VARCHAR(30) NOT NULL, LASTNAME VARCHAR(30), DOE DATE DEFAULT 'UNKNOWN', HOD VARCHACREATE TABLE IF NOT EXISTS DEPARTMENTS ( ID INT AUTO INCREMENT, FIRTOTAL STUDENTS DECIMAL, PRIMARY KEY (ID));
+ VARCHAR(30), HOD GENDER ENUM ('MALE', 'FEMALE', 'TRANSGENDER') NOT NULL,
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AUTO INCREMENT, FIRSTNAME VARCHAR(30) NOT NULL, LASTNAME VARCHAR(30), DOE DATE D' at line 1
+mysql> CREATE TABLE IF NOT EXISTS DEPARTMENTS ( ID INT AUTO_INCREMENT, FIRSTNAME VARCHAR(30) NOT_NULL, LASTNAME VARCHAR(30), DOE DATE DEFAULT 'UNKNOWN', HOD
+ VARCHAR(30), HOD GENDER ENUM ('MALE', 'FEMALE', 'TRANSGENDER') NOT_NULL, TOTAL STUDENTS DECIMAL, PRIMARY KEY (ID));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'NOT_NULL, LASTNAME VARCHAR(30), DOE DATE DEFAULT 'UNKNOWN', HOD VARCHAR(30), HOD' at line 1
+mysql> CREATE TABLE IF NOT EXISTS DEPARTMENTS ( ID INT AUTO_INCREMENT, FIRSTNAME VARCHAR(30) NOT_NULL, LASTNAME VARCHAR(30), DOE DATE DEFAULT 'UNKNOWN', HOD VARCHAR(30), HOD GENDER ENUM ('MALE', 'FEMALE', 'TRANSGENDER') NOT_NULL, TOTAL STUDENTS DECIMAL, PRIMARY KEY (ID));
+       CREATE TABLE IF NOT EXISTS DEPARTMENTS ( ID INT AUTO_INCREMENT, FIRSTNAME VARCHAR(30) NOT_NULL, LASTNAME VARCHAR(30), DOE DATE DEFAULT 'UNKNO
+ VARCHAR(30), HOD GENDER ENUM ('MALE', 'FEMALE', 'TRANSGENDER') NOT_NULL,
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'NOT_NULL, LASTNAME VARCHAR(30), DOE DATE DEFAULT 'UNKNOWN', HOD VARCHAR(30), HOD' at line 1
+mysql> CREATE TABLE IF NOT EXISTS DEPARTMENTS ( ID INT AUTO_INCREMENT, FIRSTNAME VARCHAR(30) NOT NULL, LASTNAME VARCHAR(30), DOE DATE DEFAULT 'UNKNOWN', HOD
+ VARCHAR(30), HOD_GENDER ENUM ('MALE', 'FEMALE', 'TRANSGENDER') NOT NULL, TOTAL_STUDENTS DECIMAL, PRIMARY KEY (ID));
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+mysql> SHOW TABLES
+    -> SHOW TABLES;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SHOW TABLES' at line 2
+mysql> SHOW TABLES;
++---------------+
+| Tables_in_hit |
++---------------+
+| departments   |
++---------------+
+1 row in set (0.01 sec)
+
+mysql> INSERT INTO DEPARTMENTS (FIRSTNAME, LASTNAME, DOE, HOD, HOD_GENDER, TOTAL_STUDENTS) VALUES ("MECHANICAL", "ENGINEERING", "01-01-2002", "T.K_JANA", "1", 60);
+ERROR 1292 (22007): Incorrect date value: '01-01-2002' for column 'DOE' at row 1
+mysql> INSERT INTO DEPARTMENTS (FIRSTNAME, LASTNAME, DOE, HOD, HOD_GENDER, TOTAL_STUDENTS) VALUES ("MECHANICAL", "ENGINEERING", "2002-10-01", "T.K_J
+ANA", "1", 60);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> SHOW TABLES;
++---------------+
+| Tables_in_hit |
++---------------+
+| departments   |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> SHOW DEPARTMENTS;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DEPARTMENTS' at line 1
+mysql> DESC DEPARTMENTS;
++----------------+-------------------------------------+------+-----+---------+-------+
+| Field          | Type                                | Null | Key | Default | Extra |
++----------------+-------------------------------------+------+-----+---------+-------+
+| FIRSTNAME      | varchar(30)                         | YES  |     | NULL    |       |
+| LASTNAME       | varchar(30)                         | YES  |     | NULL    |       |
+| DOE            | date                                | YES  |     | NULL    |       |
+| HOD            | varchar(30)                         | YES  |     | NULL    |       |
+| HOD_GENDER     | enum('MALE','FEMALE','TRANSGENDER') | YES  |     | NULL    |       |
+| TOTAL_STUDENTS | decimal(10,0)                       | YES  |     | NULL    |       |
++----------------+-------------------------------------+------+-----+---------+-------+
+6 rows in set (0.01 sec)
+
+mysql> CREATE TABLE IF NOT EXISTS DEPARTMENTS ( ID INT AUTO_INCREMENT, FIRSTNAME VARCHAR(30) NOT NULL, LASTNAME VARCHAR(30), DOE DATE DEFAULT 'UNKNOWN', HOD VARCHAR(30), HOD_GENDER ENUM ('MALE', 'FEMALE', 'TRANSGENDER') NOT NULL, TOTAL_STUDENTS DECIMAL, PRIMARY KEY (ID));
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+mysql> DESC DEPARTMENTS;
++----------------+-------------------------------------+------+-----+---------+-------+
+| Field          | Type                                | Null | Key | Default | Extra |
++----------------+-------------------------------------+------+-----+---------+-------+
+| FIRSTNAME      | varchar(30)                         | YES  |     | NULL    |       |
+| LASTNAME       | varchar(30)                         | YES  |     | NULL    |       |
+| DOE            | date                                | YES  |     | NULL    |       |
+| HOD            | varchar(30)                         | YES  |     | NULL    |       |
+| HOD_GENDER     | enum('MALE','FEMALE','TRANSGENDER') | YES  |     | NULL    |       |
+| TOTAL_STUDENTS | decimal(10,0)                       | YES  |     | NULL    |       |
++----------------+-------------------------------------+------+-----+---------+-------+
+6 rows in set (0.01 sec)
+
+mysql> CREATE TABLE IF NOT EXISTS BRANCHES ( ID INT AUTO_INCREMENT, FIRSTNAME VARCHAR(30) NOT NULL, LASTNAME VARCHAR(30), DOE DATE DEFAULT 'UNKNOWN', HOD VARCHAR(30), HOD_GENDER ENUM ('MALE', 'FEMALE', 'TRANSGENDER') NOT NULL, TOTAL_STUDENTS DECIMAL, PRIMARY KEY (ID));
+ERROR 1067 (42000): Invalid default value for 'DOE'
+mysql> CREATE TABLE IF NOT EXISTS BRANCHES ( ID INT AUTO_INCREMENT, FIRSTNAME VARCHAR(30) NOT NULL, LASTNAME VARCHAR(30), DOE DATE DEFAULT "UNKNOWN", HOD VA
+RCHAR(30), HOD_GENDER ENUM ('MALE', 'FEMALE', 'TRANSGENDER') NOT NULL, TOTAL_STUDENTS DECIMAL, PRIMARY KEY (ID));
+ERROR 1067 (42000): Invalid default value for 'DOE'
+mysql> CREATE TABLE IF NOT EXISTS BRANCHES ( ID INT AUTO_INCREMENT, FIRSTNAME VARCHAR(30) NOT NULL, LASTNAME VARCHAR(30) DEFAULT "UNKNOWN", DOE DATE, HOD VARCHAR(30), HOD_GENDER ENUM ('MALE', 'FEMALE', 'TRANSGENDER') NOT NULL, TOTAL_STUDENTS DECIMAL, PRIMARY KEY (ID));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> DESC BRACHES;
+ERROR 1146 (42S02): Table 'hit.braches' doesn't exist
+mysql> DESC BRANCHES;
++----------------+-------------------------------------+------+-----+---------+----------------+
+| Field          | Type                                | Null | Key | Default | Extra          |
++----------------+-------------------------------------+------+-----+---------+----------------+
+| ID             | int                                 | NO   | PRI | NULL    | auto_increment |
+| FIRSTNAME      | varchar(30)                         | NO   |     | NULL    |                |
+| LASTNAME       | varchar(30)                         | YES  |     | UNKNOWN |                |
+| DOE            | date                                | YES  |     | NULL    |                |
+| HOD            | varchar(30)                         | YES  |     | NULL    |                |
+| HOD_GENDER     | enum('MALE','FEMALE','TRANSGENDER') | NO   |     | NULL    |                |
+| TOTAL_STUDENTS | decimal(10,0)                       | YES  |     | NULL    |                |
++----------------+-------------------------------------+------+-----+---------+----------------+
+7 rows in set (0.00 sec)
+
+mysql> DROP DEPARTMENTS;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DEPARTMENTS' at line 1
+mysql> DROP TABLE DEPARTMENTS;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> SHOW TABLES;
++---------------+
+| Tables_in_hit |
++---------------+
+| branches      |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> CREATE TABLE IF NOT EXISTS DEPARTMENTS ( ID INT AUTO_INCREMENT, FIRSTNAME VARCHAR(30) NOT NULL, LASTNAME VARCHAR(30) DEFAULT "UNKNOWN", DOE DATE, HOD VARCHAR(30), HOD_GENDER ENUM ('MALE', 'FEMALE', 'TRANSGENDER') NOT NULL, TOTAL_STUDENTS DECIMAL, PRIMARY KEY (ID));
+Query OK, 0 rows affected (0.10 sec)
+
+mysql>  INSERT INTO DEPARTMENTS (FIRSTNAME, LASTNAME, DOE, HOD, HOD_GENDER, TOTAL_STUDENTS) VALUES ("MECHANICAL", "ENGINEERING", "01-01-2002", "T.K_JANA", "1", 60);
+ERROR 1292 (22007): Incorrect date value: '01-01-2002' for column 'DOE' at row 1
+mysql>  INSERT INTO DEPARTMENTS (FIRSTNAME, LASTNAME, DOE, HOD, HOD_GENDER, TOTAL_STUDENTS) VALUES ("MECHANICAL", "ENGINEERING", "2002-10-02", "T.K_JANA", "1", 60);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> SHOW FORM DEPARTMENTS;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FORM DEPARTMENTS' at line 1
+mysql> DESC DEPARTMENTS;
++----------------+-------------------------------------+------+-----+---------+----------------+
+| Field          | Type                                | Null | Key | Default | Extra          |
++----------------+-------------------------------------+------+-----+---------+----------------+
+| ID             | int                                 | NO   | PRI | NULL    | auto_increment |
+| FIRSTNAME      | varchar(30)                         | NO   |     | NULL    |                |
+| LASTNAME       | varchar(30)                         | YES  |     | UNKNOWN |                |
+| DOE            | date                                | YES  |     | NULL    |                |
+| HOD            | varchar(30)                         | YES  |     | NULL    |                |
+| HOD_GENDER     | enum('MALE','FEMALE','TRANSGENDER') | NO   |     | NULL    |                |
+| TOTAL_STUDENTS | decimal(10,0)                       | YES  |     | NULL    |                |
++----------------+-------------------------------------+------+-----+---------+----------------+
+7 rows in set (0.01 sec)
+
+mysql> SELECT FROM DEPARTMENTS;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM DEPARTMENTS' at line 1
+mysql> SELECT * FROM DEPARTMENTS;
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+|  1 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
++----+------------+-------------+------------+----------+------------+----------------+
+1 row in set (0.00 sec)
+
+mysql>  INSERT INTO DEPARTMENTS (FIRSTNAME, LASTNAME, DOE, HOD, HOD_GENDER, TOTAL_STUDENTS) VALUES ("MECHANICAL", "ENGINEERING", "2002-10-02", "T.K_JANA", "1", 60);("ELECTRICAL", "ENGINEERING", "2006-12-15", "ABC", "2", 40
+);
+Query OK, 1 row affected (0.01 sec)
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"ELECTRICAL", "ENGINEERING", "2006-12-15", "ABC", "2", 40)' at line 1
+mysql>  INSERT INTO DEPARTMENTS (FIRSTNAME, LASTNAME, DOE, HOD, HOD_GENDER, TOTAL_STUDENTS) VALUES ("MECHANICAL", "ENGINEERING", "2002-10-02", "T.K_JANA", "1", 60), ("ELECTRICAL", "ENGINEERING", "2006-12-15", "ABC", "2", 4
+0);
+Query OK, 2 rows affected (0.05 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM DEPARTMENTS;
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+|  1 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  2 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  3 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  4 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABC      | FEMALE     |             40 |
++----+------------+-------------+------------+----------+------------+----------------+
+4 rows in set (0.00 sec)
+        INSERT INTO DEPARTMENTS (FIRSTNAME, LASTNAME, DOE, HOD, HOD_GENDER, TOTAL_STUDENTS) VALUES ("MECHANICAL", "ENGINEERING", "01-01-2002", "T.K_JANA", "1", 60);
+ERROR 1292 (22007): Incorrect date value: '01-01-2002' for column 'DOE' at row 1
+mysql>  INSERT INTO DEPARTMENTS (FIRSTNAME, LASTNAME, DOE, HOD, HOD_GENDER, TOTAL_STUDENTS),(FIRSTNAME, LASTNAME, DOE, HOD_GENDER, TOTAL_STUDENTS) VALUES ("
+MECHANICAL", "ENGINEERING", "2002-10-02", "T.K_JANA", "1", 60);("ELECTRICAL", "ENGINEERING", "2006-12-15", "2", 50);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',(FIRSTNAME, LASTNAME, DOE, HOD_GENDER, TOTAL_STUDENTS) VALUES ("MECHANICAL", "E' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"ELECTRICAL", "ENGINEERING", "2006-12-15", "2", 50)' at line 1
+mysql>  INSERT INTO DEPARTMENTS (FIRSTNAME, LASTNAME, DOE, HOD, HOD_GENDER, TOTAL_STUDENTS),(FIRSTNAME, LASTNAME, DOE, HOD_GENDER, TOTAL_STUDENTS) VALUES ("MECHANICAL", "ENGINEERING", "2002-10-02", "T.K_JANA", "1", 60), ("ELECTRICAL", "ENGINEERING", "2006-12-15", "2", 50);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',(FIRSTNAME, LASTNAME, DOE, HOD_GENDER, TOTAL_STUDENTS) VALUES ("MECHANICAL", "E' at line 1
+mysql>  INSERT INTO DEPARTMENTS (FIRSTNAME, LASTNAME, DOE, HOD, HOD_GENDER, TOTAL_STUDENTS), (FIRSTNAME, LASTNAME, DOE, HOD_GENDER, TOTAL_STUDENTS) VALUES ("MECHANICAL", "ENGINEERING", "2002-10-02", "T.K_JANA", "1", 60), ("ELECTRICAL", "ENGINEERING", "2006-12-15", "2", 50);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', (FIRSTNAME, LASTNAME, DOE, HOD_GENDER, TOTAL_STUDENTS) VALUES ("MECHANICAL", "' at line 1
+mysql>
+mysql>  INSERT INTO DEPARTMENTS (FIRSTNAME, LASTNAME, DOE, HOD, HOD_GENDER, TOTAL_STUDENTS), (FIRSTNAME, LASTNAME, DOE, HOD_GENDER, TOTAL_STUDENTS) VALUES ("MECHANICAL", "ENGINEERING", "2002-10-02", "T.K_JANA", "1", 60), ("ELECTRICAL", "ENGINEERING", "2006-12-15", "2", 50);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', (FIRST AME, LASTNAME, DOE, HOD_GENDER, TOTAL_STUDENTS) VALUES ("MECHANICAL", "' at line 1
+mysql> INSERT INTO DEPARTMENTS (FIRSTNAME, LASTNAME, DOE, HOD, HOD_GENDER, TOTAL_STUDENTS), (FIRSTNAME, LASTNAME, DOE, HOD_GENDER, TOTAL_STUDENTS) VALUES ("MECHANICAL", "ENGINEERING", "2002-10-02", "T.K_JANA", "1", 60), ("ELECTRICAL", "ENGINEERING", "2006-12-15", "2", 50);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', (FIRSTNAME, LASTNAME, DOE, HOD_GENDER, TOTAL_STUDENTS) VALUES ("MECHANICAL", "' at line 1
+mysql> INSERT INTO DEPARTMENTS ((FIRSTNAME, LASTNAME, DOE, HOD, HOD_GENDER, TOTAL_STUDENTS), (FIRSTNAME, LASTNAME, DOE, HOD_GENDER, TOTAL_STUDENTS)) VALUES("MECHANICAL", "ENGINEERING", "2002-10-02", "T.K_JANA", "1", 60), ("ELECTRICAL", "ENGINEERING", "2006-12-15", "2", 50);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FIRSTNAME, LASTNAME, DOE, HOD, HOD_GENDER, TOTAL_STUDENTS), (FIRSTNAME, LASTNAME' at line 1
+mysql>
+mysql>  INSERT INTO DEPARTMENTS (FIRSTNAME, LASTNAME, DOE, HOD, HOD_GENDER, TOTAL_STUDENTS), (FIRSTNAME, LASTNAME, DOE, HOD_GENDER, TOTAL_STUDENTS) VALUES ("MECHANICAL", "ENGINEERING", "2002-10-02", "T.K_JANA", "1", 60), ("ELECTRICAL", "ENGINEERING", "2006-12-15", "2", 50);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', (FIRSTNAME, LASTNAME, DOE, HOD_GENDER, TOTAL_STUDENTS) VALUES ("MECHANICAL", "' at line 1
+mysql>  INSERT INTO DEPARTMENTS (FIRSTNAME, LASTNAME, DOE, HOD, HOD_GENDER, TOTAL_STUDENTS), (FIRSTNAME, LASTNAME, DOE, HOD_GENDER, TOTAL_STUDENTS) VALUES ("MECHANICAL", "ENGINEERING", "2002-10-02", "T.K_JANA", "1", 60), ("ELECTRICAL", "ENGINEERING", "2006-12-15", "2", 50);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', (FIRSTNAME, LASTNAME, DOE, HOD_GENDER, TOTAL_STUDENTS) VALUES ("MECHANICAL", "' at line 1
+mysql>  INSERT INTO DEPARTMENTS (FIRSTNAME, LASTNAME, DOE, HOD, HOD_GENDER, TOTAL_STUDENTS), (FIRSTNAME, LASTNAME, DOE, HOD_GENDER, TOTAL_STUDENTS) VALUES ("MECHANICAL", "ENGINEERING", "2002-10-02", "T.K_JANA", "1", 60), ("ELECTRICAL", "ENGINEERING", "2006-12-15", "2", 50);
+        INSERT INTO DEPARTMENTS (FIRSTNAME, LASTNAME, DOE, HOD, HOD_GENDER, TOTAL_STUDENTS), (FIRSTNAME, LASTNAME, DOE, HOD_GENDER, TOTAL_STUDENTS)
+VALUES ("MECHANICAL", "ENGINEERING", "2002-10-02", "T.K_JANA", "1", 60), (
+"ELECTRICAL", "ENGINEERING", "2006-12-15", "2", 50);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ', (FIRSTNAME, LASTNAME, DOE, HOD_GENDER, TOTAL_STUDENTS) VALUES ("MECHANICAL", "' at line 1
+mysql>  INSERT INTO DEPARTMENTS SET DOE="2006-12-05", FIRSTNAME="ELECTRONIC", LASTNAME="ENGINEERING", TOTAL_STUDENTS=60;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT FROM DEPARTMENTS;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM DEPARTMENTS' at line 1
+mysql> SELECT * FROM DEPARTMENTS;
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+|  1 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  2 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  3 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  4 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABC      | FEMALE     |             40 |
+|  5 | ELECTRONIC | ENGINEERING | 2006-12-05 | NULL     | MALE       |             60 |
++----+------------+-------------+------------+----------+------------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> DESC DEPARMENTS;
+ERROR 1146 (42S02): Table 'hit.deparments' doesn't exist
+mysql> DESC DEPARTMENTS;
++----------------+-------------------------------------+------+-----+---------+----------------+
+| Field          | Type                                | Null | Key | Default | Extra          |
++----------------+-------------------------------------+------+-----+---------+----------------+
+| ID             | int                                 | NO   | PRI | NULL    | auto_increment |
+| FIRSTNAME      | varchar(30)                         | NO   |     | NULL    |                |
+| LASTNAME       | varchar(30)                         | YES  |     | UNKNOWN |                |
+| DOE            | date                                | YES  |     | NULL    |                |
+| HOD            | varchar(30)                         | YES  |     | NULL    |                |
+| HOD_GENDER     | enum('MALE','FEMALE','TRANSGENDER') | NO   |     | NULL    |                |
+| TOTAL_STUDENTS | decimal(10,0)                       | YES  |     | NULL    |                |
++----------------+-------------------------------------+------+-----+---------+----------------+
+7 rows in set (0.00 sec)
+
+mysql>  INSERT INTO DEPARTMENTS SET DOE="2006-12-05", FIRSTNAME="ELECTRONIC", TOTAL_STUDENTS=60;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT FROM DEPARTMENTS;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM DEPARTMENTS' at line 1
+mysql> SELECT * FROM DEPARTMENTS;
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+|  1 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  2 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  3 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  4 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABC      | FEMALE     |             40 |
+|  5 | ELECTRONIC | ENGINEERING | 2006-12-05 | NULL     | MALE       |             60 |
+|  6 | ELECTRONIC | UNKNOWN     | 2006-12-05 | NULL     | MALE       |             60 |
++----+------------+-------------+------------+----------+------------+----------------+
+6 rows in set (0.00 sec)
+
+mysql>  INSERT INTO DEPARTMENTS (FIRSTNAME, LASTNAME, DOE, HOD, HOD_GENDER, TOTAL_STUDENTS) VALUES ("MECHANICAL", "ENGINEERING", "2002-10-02", "T.K_JANA", "1", 60), ("ELECTRICAL", "ENGINEERING", "2006-12-15", "2", 50);
+ERROR 1136 (21S01): Column count doesn't match value count at row 2
+mysql>  INSERT INTO DEPARTMENTS (FIRSTNAME, LASTNAME, DOE, HOD, HOD_GENDER, TOTAL_STUDENTS) VALUES ("MECHANICAL", "ENGINEERING", "2002-10-02", "T.K_JANA", "1", 60), ("ELECTRICAL", "ENGINEERING", "2006-12-15", "ABCD", "2", 50);
+Query OK, 2 rows affected (0.05 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM DEPARTMENTS;
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+|  1 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  2 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  3 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  4 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABC      | FEMALE     |             40 |
+|  5 | ELECTRONIC | ENGINEERING | 2006-12-05 | NULL     | MALE       |             60 |
+|  6 | ELECTRONIC | UNKNOWN     | 2006-12-05 | NULL     | MALE       |             60 |
+|  7 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  8 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABCD     | FEMALE     |             50 |
++----+------------+-------------+------------+----------+------------+----------------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT FIRSTNAME, HOD FROM DEPARTMENTS;
++------------+----------+
+| FIRSTNAME  | HOD      |
++------------+----------+
+| MECHANICAL | T.K_JANA |
+| MECHANICAL | T.K_JANA |
+| MECHANICAL | T.K_JANA |
+| ELECTRICAL | ABC      |
+| ELECTRONIC | NULL     |
+| ELECTRONIC | NULL     |
+| MECHANICAL | T.K_JANA |
+| ELECTRICAL | ABCD     |
++------------+----------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT * FROM DEPARTMENTS WHERE GENDER = "MALE";
+ERROR 1054 (42S22): Unknown column 'GENDER' in 'where clause'
+mysql> SELECT * FROM DEPARTMENTS WHERE HOD_GENDER = "MALE";
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+|  1 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  2 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  3 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  5 | ELECTRONIC | ENGINEERING | 2006-12-05 | NULL     | MALE       |             60 |
+|  6 | ELECTRONIC | UNKNOWN     | 2006-12-05 | NULL     | MALE       |             60 |
+|  7 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
++----+------------+-------------+------------+----------+------------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT * FROM DEPARTMENTS WHERE TOTAL_STUDENTS>40;
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+|  1 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  2 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |
+         60 |
+|  3 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  5 | ELECTRONIC | ENGINEERING | 2006-12-05 | NULL     | MALE       |             60 |
+|  6 | ELECTRONIC | UNKNOWN     | 2006-12-05 | NULL     | MALE       |             60 |
+|  7 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  8 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABCD     | FEMALE     |             50 |
++----+------------+-------------+------------+----------+------------+----------------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT * FROM DEPARTMENTS WHERE TOTAL_STUDENTS > 40;
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+|  1 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  2 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  3 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  5 | ELECTRONIC | ENGINEERING | 2006-12-05 | NULL     | MALE       |             60 |
+|  6 | ELECTRONIC | UNKNOWN     | 2006-12-05 | NULL     | MALE       |             60 |
+|  7 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  8 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABCD     | FEMALE     |             50 |
++----+------------+-------------+------------+----------+------------+----------------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT * FROM DEPARTMENTS WHERE FIRSTNAME LIKE "AB%";;
+Empty set (0.00 sec)
+
+ERROR:
+No query specified
+
+mysql> SELECT * FROM DEPARTMENTS WHERE HOD LIKE "AB%";;
++----+------------+-------------+------------+------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD  | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+------+------------+----------------+
+|  4 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABC  | FEMALE     |             40 |
+|  8 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABCD | FEMALE     |             50 |
++----+------------+-------------+------------+------+------------+----------------+
+2 rows in set (0.00 sec)
+
+ERROR:
+No query specified
+
+mysql> SELECT * FROM DEPARTMENTS WHERE FIRSTNAME LIKE "%CH%";;
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+|  1 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  2 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  3 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  7 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |
+         60 |
++----+------------+-------------+------------+----------+------------+----------------+
+4 rows in set (0.00 sec)
+
+ERROR:
+No query specified
+
+mysql> SELECT * FROM DEPARTMENTS WHERE FIRSTNAME LIKE "M%";
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+|  1 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  2 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  3 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  7 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |
+         60 |
++----+------------+-------------+------------+----------+------------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT * FROM DEPARTMENTS WHERE FIRSTNAME LIKE "E%";
++----+------------+-------------+------------+------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD  | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+------+------------+----------------+
+|  4 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABC  | FEMALE     |             40 |
+|  5 | ELECTRONIC | ENGINEERING | 2006-12-05 | NULL | MALE       |             60 |
+|  6 | ELECTRONIC | UNKNOWN     | 2006-12-05 | NULL | MALE       |             60 |
+|  8 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABCD | FEMALE     |             50 |
++----+------------+-------------+------------+------+------------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT * FROM DEPARTMENTS WHERE FIRSTNAME LIKE "%L";
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+|  1 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  2 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  3 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  4 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABC      | FEMALE     |             40 |
+|  7 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  8 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABCD     | FEMALE     |             50 |
++----+------------+-------------+------------+----------+------------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT * FROM DEPARTMENTS WHERE FIRSTNAME LIKE "%S";
+Empty set (0.00 sec)
+
+mysql> SELECT * FROM DEPARTMENTS WHERE FIRSTNAME LIKE "%C";
++----+------------+-------------+------------+------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD  | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+------+------------+----------------+
+|  5 | ELECTRONIC | ENGINEERING | 2006-12-05 | NULL | MALE       |             60 |
+|  6 | ELECTRONIC | UNKNOWN     | 2006-12-05 | NULL | MALE       |             60 |
++----+------------+-------------+------------+------+------------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM DEPARTMENTS ORDER BY FIRSTNAME;
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+|  4 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABC      | FEMALE     |             40 |
+|  8 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABCD     | FEMALE     |             50 |
+|  5 | ELECTRONIC | ENGINEERING | 2006-12-05 | NULL     | MALE       |             60 |
+|  6 | ELECTRONIC | UNKNOWN     | 2006-12-05 | NULL     | MALE       |             60 |
+|  1 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  2 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  3 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  7 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
++----+------------+-------------+------------+----------+------------+----------------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT * FROM DEPARTMENTS ORDER BY TOTAL_STUDENTS;
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+|  4 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABC      | FEMALE     |             40 |
+|  8 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABCD     | FEMALE     |             50 |
+|  1 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  2 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  3 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  5 | ELECTRONIC | ENGINEERING | 2006-12-05 | NULL     | MALE       |             60 |
+|  6 | ELECTRONIC | UNKNOWN     | 2006-12-05 | NULL     | MALE       |             60 |
+|  7 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
++----+------------+-------------+------------+----------+------------+----------------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT * FROM DEPARTMENTS ORDER BY FIRSTNAME, TOTAL_STUDENTS;
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+|  4 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABC      | FEMALE     |             40 |
+|  8 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABCD     | FEMALE     |             50 |
+|  5 | ELECTRONIC | ENGINEERING | 2006-12-05 | NULL     | MALE       |             60 |
+|  6 | ELECTRONIC | UNKNOWN     | 2006-12-05 | NULL     | MALE       |
+         60 |
+|  1 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |
+         60 |
+|  2 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  3 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  7 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |
+         60 |
++----+------------+-------------+------------+----------+------------+----------------+
+mysql> in set (0.00 sec)
+mysql>
+mysql> SELECT * FROM DEPARTMENTS ORDER BY TOTAL_STUDENTS, FIRSTNAME;
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+|  4 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABC      | FEMALE     |             40 |
+|  8 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABCD     | FEMALE     |             50 |
+|  5 | ELECTRONIC | ENGINEERING | 2006-12-05 | NULL     | MALE       |             60 |
+|  6 | ELECTRONIC | UNKNOWN     | 2006-12-05 | NULL     | MALE       |             60 |
+|  1 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  2 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  3 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  7 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
++----+------------+-------------+------------+----------+------------+----------------+
+8 rows in set (0.00 sec)
+
+mysql>  INSERT INTO DEPARTMENTS (FIRSTNAME, LASTNAME, DOE, HOD, HOD_GENDER, TOTAL_STUDENTS) VALUES ("MECHANICAL", "ENGINEERING", "2002-10-02", "T.K_JANA", "1", 10);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> SELECT * FROM DEPARTMENTS ORDER BY TOTAL_STUDENTS, FIRSTNAME;
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+|  9 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             10 |
+|  4 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABC      | FEMALE     |             40 |
+|  8 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABCD     | FEMALE     |             50 |
+|  5 | ELECTRONIC | ENGINEERING | 2006-12-05 | NULL     | MALE       |             60 |
+|  6 | ELECTRONIC | UNKNOWN     | 2006-12-05 | NULL     | MALE       |             60 |
+|  1 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  2 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  3 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  7 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
++----+------------+-------------+------------+----------+------------+----------------+
+9 rows in set (0.00 sec)
+
+mysql>  INSERT INTO DEPARTMENTS (FIRSTNAME, LASTNAME, DOE, HOD, HOD_GENDER, TOTAL_STUDENTS) VALUES ("ELECTRICAL", "ENGINEERING", "2002-10-02", "T.K_JANA", "
+1", 10);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM DEPARTMENTS ORDER BY TOTAL_STUDENTS, FIRSTNAME;
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+| 10 | ELECTRICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             10 |
+|  9 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             10 |
+|  4 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABC      | FEMALE     |             40 |
+|  8 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABCD     | FEMALE     |             50 |
+|  5 | ELECTRONIC | ENGINEERING | 2006-12-05 | NULL     | MALE       |             60 |
+|  6 | ELECTRONIC | UNKNOWN     | 2006-12-05 | NULL     | MALE       |             60 |
+|  1 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  2 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  3 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  7 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
++----+------------+-------------+------------+----------+------------+----------------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT * FROM DEPARTMENTS ORDER BY FIRSTNAME DESC;
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+|  1 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  2 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  3 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  7 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  9 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             10 |
+|  5 | ELECTRONIC | ENGINEERING | 2006-12-05 | NULL     | MALE       |             60 |
+|  6 | ELECTRONIC | UNKNOWN     | 2006-12-05 | NULL     | MALE       |             60 |
+|  4 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABC      | FEMALE     |             40 |
+|  8 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABCD     | FEMALE     |             50 |
+| 10 | ELECTRICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             10 |
++----+------------+-------------+------------+----------+------------+----------------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT * FROM DEPARTMENTS ORDER BY FIRSTNAME DESC, TOTAL_STUDENTS ASC;
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+|  9 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             10 |
+|  1 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  2 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  3 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  7 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  5 | ELECTRONIC | ENGINEERING | 2006-12-05 | NULL     | MALE       |             60 |
+|  6 | ELECTRONIC | UNKNOWN     | 2006-12-05 | NULL     | MALE       |             60 |
+| 10 | ELECTRICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             10 |
+|  4 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABC      | FEMALE     |             40 |
+|  8 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABCD     | FEMALE     |             50 |
++----+------------+-------------+------------+----------+------------+----------------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT * FROM DEPARTMENTS ORDER BY FIRSTNAME DESC;
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+|  1 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  2 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  3 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  7 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  9 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             10 |
+|  5 | ELECTRONIC | ENGINEERING | 2006-12-05 | NULL     | MALE       |             60 |
+|  6 | ELECTRONIC | UNKNOWN     | 2006-12-05 | NULL     | MALE       |             60 |
+|  4 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABC      | FEMALE     |             40 |
+|  8 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABCD     | FEMALE     |             50 |
+| 10 | ELECTRICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             10 |
++----+------------+-------------+------------+----------+------------+----------------+
+10 rows in set (0.00 sec)
+
+mysql> SELECT * FROM DEPARTMENTS ORDER BY BINARY FIRSTNAME DESC;
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+|  1 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  2 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  3 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  7 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  9 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             10 |
+|  5 | ELECTRONIC | ENGINEERING | 2006-12-05 | NULL     | MALE       |             60 |
+|  6 | ELECTRONIC | UNKNOWN     | 2006-12-05 | NULL     | MALE       |             60 |
+|  4 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABC      | FEMALE     |             40 |
+|  8 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABCD     | FEMALE     |             50 |
+| 10 | ELECTRICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |
+         10 |
++----+------------+-------------+------------+----------+------------+----------------+
+10 rows in set, 1 warning (0.00 sec)
+       SELECT * FROM DEPARTMENTS ORDER BY BINARY FIRSTNAME DESC;
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+|  1 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  2 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  3 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  7 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  9 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             10 |
+|  5 | ELECTRONIC | ENGINEERING | 2006-12-05 | NULL     | MALE       |             60 |
+|  6 | ELECTRONIC | UNKNOWN     | 2006-12-05 | NULL     | MALE       |             60 |
+|  4 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABC      | FEMALE     |             40 |
+|  8 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABCD     | FEMALE     |             50 |
+| 10 | ELECTRICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             10 |
++----+------------+-------------+------------+----------+------------+----------------+
+10 rows in set, 1 warning (0.00 sec)
+
+mysql> SELECT * FROM DEPARTMENTS ORDER BY BINARY FIRSTNAME ASC;
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+|  4 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABC      | FEMALE     |             40 |
+|  8 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABCD     | FEMALE     |             50 |
+| 10 | ELECTRICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             10 |
+|  5 | ELECTRONIC | ENGINEERING | 2006-12-05 | NULL     | MALE       |             60 |
+|  6 | ELECTRONIC | UNKNOWN     | 2006-12-05 | NULL     | MALE       |             60 |
+|  1 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  2 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  3 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  7 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  9 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             10 |
++----+------------+-------------+------------+----------+------------+----------------+
+10 rows in set, 1 warning (0.00 sec)
+
+mysql> SELECT * FROM DEPARTMENTS ORDER BY FIRSTNAME LIMIT 6;
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+|  4 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABC      | FEMALE     |
+         40 |
+|  8 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABCD     | FEMALE     |             50 |
+| 10 | ELECTRICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             10 |
+|  5 | ELECTRONIC | ENGINEERING | 2006-12-05 | NULL     | MALE       |             60 |
+|  6 | ELECTRONIC | UNKNOWN     | 2006-12-05 | NULL     | MALE       |
+         60 |
+|  1 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
++----+------------+-------------+------------+----------+------------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT * FROM DEPARTMENTS ORDER BY FIRSTNAME LIMIT 6 OFFSET 2;
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+| 10 | ELECTRICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             10 |
+|  5 | ELECTRONIC | ENGINEERING | 2006-12-05 | NULL     | MALE       |             60 |
+|  6 | ELECTRONIC | UNKNOWN     | 2006-12-05 | NULL     | MALE       |             60 |
+|  1 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  2 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  3 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
++----+------------+-------------+------------+----------+------------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT * FROM DEPARTMENTS ORDER BY CAST(TOTAL_STUDENTS AS CHAR) LIM
+IT 6 OFFSET 2;
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+|  4 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABC      | FEMALE     |             40 |
+|  8 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABCD     | FEMALE     |             50 |
+|  1 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  2 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  3 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  5 | ELECTRONIC | ENGINEERING | 2006-12-05 | NULL     | MALE       |             60 |
++----+------------+-------------+------------+----------+------------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT * FROM DEPARTMENTS ORDER BY CAST(TOTAL_STUDENTS AS CHAR) LIMIT 6 ;
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+|  9 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             10 |
+| 10 | ELECTRICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             10 |
+|  4 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABC      | FEMALE     |             40 |
+|  8 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABCD     | FEMALE     |             50 |
+|  1 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  2 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
++----+------------+-------------+------------+----------+------------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> DELETE FROM DEPARTMENTS WHERE TOTAL_STUDENTS<40;
+Query OK, 2 rows affected (0.04 sec)
+
+mysql> SELECT FROM DEPARTMENTS;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM DEPARTMENTS' at line 1
+mysql> SELECT * FROM DEPARTMENTS;
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+|  1 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  2 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  3 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  4 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABC      | FEMALE     |             40 |
+|  5 | ELECTRONIC | ENGINEERING | 2006-12-05 | NULL     | MALE       |             60 |
+|  6 | ELECTRONIC | UNKNOWN     | 2006-12-05 | NULL     | MALE       |             60 |
+|  7 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  8 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABCD     | FEMALE     |             50 |
++----+------------+-------------+------------+----------+------------+----------------+
+8 rows in set (0.00 sec)
+
+mysql> DELETE FROM DEPARTMENTS WHERE TOTAL_STUDENTS<50 LIMIT 2;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM DEPARTMENTS;
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+|  1 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  2 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  3 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  5 | ELECTRONIC | ENGINEERING | 2006-12-05 | NULL     | MALE       |             60 |
+|  6 | ELECTRONIC | UNKNOWN     | 2006-12-05 | NULL     | MALE       |             60 |
+|  7 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  8 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABCD     | FEMALE     |             50 |
++----+------------+-------------+------------+----------+------------+----------------+
+7 rows in set (0.00 sec)
+
+mysql> DELETE FROM DEPARTMENTS WHERE TOTAL_STUDENTS<70 LIMIT 2;
+Query OK, 2 rows affected (0.01 sec)
+
+mysql> SELECT * FROM DEPARTMENTS;
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+|  3 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  5 | ELECTRONIC | ENGINEERING | 2006-12-05 | NULL     | MALE       |             60 |
+|  6 | ELECTRONIC | UNKNOWN     | 2006-12-05 | NULL     | MALE       |             60 |
+|  7 | MECHANICAL | ENGINEERING | 2002-10-02 | T.K_JANA | MALE       |             60 |
+|  8 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABCD     | FEMALE     |             50 |
++----+------------+-------------+------------+----------+------------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> UPDATE DEPARTMENTS SET HOD="G.C_BOSE", TOTAL_STUDENTS=120 WHERE FIR
+STNAME = "MECHANICAL";
+Query OK, 2 rows affected (0.01 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> SELECT * FROM DEPARTMENTS;
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+|  3 | MECHANICAL | ENGINEERING | 2002-10-02 | G.C_BOSE | MALE       |            120 |
+|  5 | ELECTRONIC | ENGINEERING | 2006-12-05 | NULL     | MALE       |
+         60 |
+|  6 | ELECTRONIC | UNKNOWN     | 2006-12-05 | NULL     | MALE       |             60 |
+|  7 | MECHANICAL | ENGINEERING | 2002-10-02 | G.C_BOSE | MALE       |            120 |
+|  8 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABCD     | FEMALE     |             50 |
++----+------------+-------------+------------+----------+------------+----------------+
+5 rows SELECT * FROM DEPARTMENTS;
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+|  3 | MECHANICAL | ENGINEERING | 2002-10-02 | G.C_BOSE | MALE       |            120 |
+|  5 | ELECTRONIC | ENGINEERING | 2006-12-05 | NULL     | MALE       |             60 |
+|  6 | ELECTRONIC | UNKNOWN     | 2006-12-05 | NULL     | MALE       |             60 |
+|  7 | MECHANICAL | ENGINEERING | 2002-10-02 | G.C_BOSE | MALE       |            120 |
+|  8 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABCD     | FEMALE     |             50 |
++----+------------+-------------+------------+----------+------------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> UPDATE DEPARTMENTS SET HOD="G.C_BOSE", TOTAL_STUDENTS=200 WHERE HOD_GENDER = "MALE" LIMIT 2;
+Query OK, 2 rows affected (0.05 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> SELECT * FROM DEPARTMENTS;
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+|  3 | MECHANICAL | ENGINEERING | 2002-10-02 | G.C_BOSE | MALE       |            200 |
+|  5 | ELECTRONIC | ENGINEERING | 2006-12-05 | G.C_BOSE | MALE       |            200 |
+|  6 | ELECTRONIC | UNKNOWN     | 2006-12-05 | NULL     | MALE       |             60 |
+|  7 | MECHANICAL | ENGINEERING | 2002-10-02 | G.C_BOSE | MALE       |            120 |
+|  8 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABCD     | FEMALE     |             50 |
++----+------------+-------------+------------+----------+------------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> UPDATE DEPARTMENTS SET HOD="G.C_BOSE", TOTAL_STUDENTS=200 WHERE HOD_GENDER = "MALE";
+Query OK, 2 rows affected (0.04 sec)
+Rows matched: 4  Changed: 2  Warnings: 0
+
+mysql> SELECT * FROM DEPARTMENTS;
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+|  3 | MECHANICAL | ENGINEERING | 2002-10-02 | G.C_BOSE | MALE       |            200 |
+|  5 | ELECTRONIC | ENGINEERING | 2006-12-05 | G.C_BOSE | MALE       |            200 |
+|  6 | ELECTRONIC | UNKNOWN     | 2006-12-05 | G.C_BOSE | MALE       |            200 |
+|  7 | MECHANICAL | ENGINEERING | 2002-10-02 | G.C_BOSE | MALE       |            200 |
+|  8 | ELECTRICAL | ENGINEERING | 2006-12-15 | ABCD     | FEMALE     |             50 |
++----+------------+-------------+------------+----------+------------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> UPDATE DEPARTMENTS SET HOD="G.C_BOSE";
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 5  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM DEPARTMENTS;
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRSTNAME  | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+|  3 | MECHANICAL | ENGINEERING | 2002-10-02 | G.C_BOSE | MALE       |            200 |
+|  5 | ELECTRONIC | ENGINEERING | 2006-12-05 | G.C_BOSE | MALE       |            200 |
+|  6 | ELECTRONIC | UNKNOWN     | 2006-12-05 | G.C_BOSE | MALE       |            200 |
+|  7 | MECHANICAL | ENGINEERING | 2002-10-02 | G.C_BOSE | MALE       |            200 |
+|  8 | ELECTRICAL | ENGINEERING | 2006-12-15 | G.C_BOSE | FEMALE     |             50 |
++----+------------+-------------+------------+----------+------------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> SHOW INDEX FROM DEPARTMENTS;
++-------------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| Table       | Non_unique | Key_name | Seq_in_index | Column_name | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible | Expression |
++-------------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| departments |          0 | PRIMARY  |            1 | ID          | A         |           5 |     NULL |   NULL |      | BTREE      |         |   | YES     | NULL       |
++-------------+------------+----------+--------------+-------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+1 row in set (0.04 sec)
+
+mysql> ALTER TABLE DEPARTMENTS CHANGE FIRSTNAME FIRST_NAME VARCHAR(50);
+Query OK, 0 rows affected (0.33 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM DEPARTMENTS;
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRST_NAME | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+|  3 | MECHANICAL | ENGINEERING | 2002-10-02 | G.C_BOSE | MALE       |            200 |
+|  5 | ELECTRONIC | ENGINEERING | 2006-12-05 | G.C_BOSE | MALE       |            200 |
+|  6 | ELECTRONIC | UNKNOWN     | 2006-12-05 | G.C_BOSE | MALE       |            200 |
+|  7 | MECHANICAL | ENGINEERING | 2002-10-02 | G.C_BOSE | MALE       |
+        200 |
+|  8 | ELECTRICAL | ENGINEERING | 2006-12-15 | G.C_BOSE | FEMALE     |             50 |
++----+------------+-------------+------------+----------+------------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> ALTER TABLE DEPARTMENTS ADD MIDDLE_NAME VARCHAR(50);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM DEPARTMENTS;
++----+------------+-------------+------------+----------+------------+----------------+-------------+
+| ID | FIRST_NAME | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS | MIDDLE_NAME |
++----+------------+-------------+------------+----------+------------+----------------+-------------+
+|  3 | MECHANICAL | ENGINEERING | 2002-10-02 | G.C_BOSE | MALE       |            200 | NULL        |
+|  5 | ELECTRONIC | ENGINEERING | 2006-12-05 | G.C_BOSE | MALE       |            200 | NULL        |
+|  6 | ELECTRONIC | UNKNOWN     | 2006-12-05 | G.C_BOSE | MALE       |            200 | NULL        |
+|  7 | MECHANICAL | ENGINEERING | 2002-10-02 | G.C_BOSE | MALE       |
+        200 | NULL        |
+|  8 | ELECTRICAL | ENGINEERING | 2006-12-15 | G.C_BOSE | FEMALE     |             50 | NULL        |
++----+------------+-------------+------------+----------+------------+----------------+-------------+
+5 rows in set (0.00 sec)
+
+mysql> ALTER TABLE DEPARTMENTS DROP MIDDLE_NAME;
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM DEPARTMENTS;
++----+------------+-------------+------------+----------+------------+----------------+
+| ID | FIRST_NAME | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+------------+----------+------------+----------------+
+|  3 | MECHANICAL | ENGINEERING | 2002-10-02 | G.C_BOSE | MALE       |            200 |
+|  5 | ELECTRONIC | ENGINEERING | 2006-12-05 | G.C_BOSE | MALE       |            200 |
+|  6 | ELECTRONIC | UNKNOWN     | 2006-12-05 | G.C_BOSE | MALE       |            200 |
+|  7 | MECHANICAL | ENGINEERING | 2002-10-02 | G.C_BOSE | MALE       |            200 |
+|  8 | ELECTRICAL | ENGINEERING | 2006-12-15 | G.C_BOSE | FEMALE     |             50 |
++----+------------+-------------+------------+----------+------------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> ALTER TABLE DEPARTMENTS DROP MIDDLE_NAME VARCHAR(50);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'VARCHAR(50)' at line 1
+mysql> ALTER TABLE DEPARTMENTS ADD MIDDLE_NAME VARCHAR(50) AFTER FIRST_NAME;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM DEPARTMENTS;
++----+------------+-------------+-------------+------------+----------+------------+----------------+
+| ID | FIRST_NAME | MIDDLE_NAME | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+-------------+------------+----------+------------+----------------+
+|  3 | MECHANICAL | NULL        | ENGINEERING | 2002-10-02 | G.C_BOSE | MALE       |            200 |
+|  5 | ELECTRONIC | NULL        | ENGINEERING | 2006-12-05 | G.C_BOSE | MALE       |            200 |
+|  6 | ELECTRONIC | NULL        | UNKNOWN     | 2006-12-05 | G.C_BOSE | MALE       |            200 |
+|  7 | MECHANICAL | NULL        | ENGINEERING | 2002-10-02 | G.C_BOSE | MALE       |            200 |
+|  8 | ELECTRICAL | NULL        | ENGINEERING | 2006-12-15 | G.C_BOSE | FEMALE     |             50 |
++----+------------+-------------+-------------+------------+----------+------------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT * FROM DEPARTMENTS FIRST_NAME AS FN;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AS FN' at line 1
+mysql> SELECT FIRST_NAME AS FN;
+ERROR 1054 (42S22): Unknown column 'FIRST_NAME' in 'field list'
+mysql> SELECT FIRST_NAME AS FN * FROM DEPARTMENTS;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* FROM DEPARTMENTS' at line 1
+mysql> SELECT * FROM DEPARTMENTS FIRST_NAME AS FN;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AS FN' at line 1
+mysql> SELECT FIRST_NAME AS FN FROM DEPARTMENTS;
++------------+
+| FN         |
++------------+
+| MECHANICAL |
+| ELECTRONIC |
+| ELECTRONIC |
+| MECHANICAL |
+| ELECTRICAL |
++------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT FIRST_NAME AS FN FROM DEPARTMENTS WHERE TOTAL_STUDENTS<60;
++------------+
+| FN         |
++------------+
+| ELECTRICAL |
++------------+
+1 row iSELECT FIRST_NAME AS FN FROM DEPARTMENTS WHERE TOTAL_STUDENTS<60;
++------------+* FROM DEPARTMENTS;
+| FN         |----+-------------+-------------+------------+----------+------------+----------------+
++------------+AME | MIDDLE_NAME | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
+| ELECTRICAL |----+-------------+-------------+------------+----------+------------+----------------+
++------------+CAL | NULL        | ENGINEERING | 2002-10-02 | G.C_BOSE | MALE       |            200 |
+1 row in set (0.00 sec)L        | ENGINEERING | 2006-12-05 | G.C_BOSE | MALE       |            200 |
+|  6 | ELECTRONIC | NULL        | UNKNOWN     | 2006-12-05 | G.C_BOSE | MALE       |            200 |
+mysql> MECHANICAL | NULL        | ENGINEERING | 2002-10-02 | G.C_BOSE | MALE       |            200 |
+mysql> ELECTRICAL | NULL        | ENGINEERING | 2006-12-15 | G.C_BOSE | FEMALE     |             50 |
+mysql> -----------+-------------+-------------+------------+----------+------------+----------------+
+mysql> in set (0.00 sec)
+mysql>
+mysql> SELECT * FROM DEPARTMENTS FIRST_NAME AS FN WHERE HOD_GENDER ="MALE";
+mysql> 064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'A
+mysql> ERE HOD_GENDER ="MALE"' at line 1
+mysql> SELECT * FROM DEPARTMENTS FIRST_NAME AS FN WHERE TOTAL_STUDENTS<60;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AS FN WHERE TOTAL_STUDENTS<60' at line 1
+mysql> SELECT DISTINCT FIRST_NAME FROM DEPARTMENTS;
++------------+
+| FIRST_NAME |
++------------+
+| MECHANICAL |
+| ELECTRONIC |
+| ELECTRICAL |
++------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT DISTINCT FIRST_NAME, TOTAL_STUDENTS FROM DEPARTMENTS;
++------------+----------------+
+| FIRST_NAME | TOTAL_STUDENTS |
++------------+----------------+
+| MECHANICAL |            200 |
+| ELECTRONIC |            200 |
+| ELECTRICAL |             50 |
++------------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT FIRST_NAME AS FN, LASTNAME AS LN FROM DEPARTMENTS WHERE TOTA
+L_STUDENTS<60;
++------------+-------------+
+| FN         | LN          |
++------------+-------------+
+| ELECTRICAL | ENGINEERING |
++------------+-------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT COUNT(*) FROM DEPARTMENTS;
++----------+
+| COUNT(*) |
++----------+
+|        5 |
++----------+
+1 row iSELECT COUNT(*) AS COUNT FROM DEPARTMENTS GROUP BY FIRST_NAME ORDERBY COUNT DESC;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ORDERBY COUNT DESC' at line 1
+mysql> OTAL_STUDENTS) |
+mysql> ---------------+
+mysql>            850 |
+mysql> ---------------+
+mysql> n set (0.00 sec)
+mysql>
+mysql> SELECT COUNT(*) AS COUNT FROM DEPARTMENTS GROUP BY FIRST_NAME ORDERBY COUNT DESC;
+mysql> 064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'O
+mysql> COUNT DESC' at line 1
+mysql> UPDATE DEPARTMENTS SET HOD="G.C_BOSE", TOTAL_STUDENTS=120 WHERE FIRSTNAME = "MECHANICAL";
+mysql> 054 (42S22): Unknown column 'FIRSTNAME' in 'where clause'
+mysql> UPDATE DEPARTMENTS SET HOD="G.C_BOSE", TOTAL_STUDENTS=120 WHERE FIRST_NAME = "MECHANICAL";
+mysql> K, 2 rows affected (0.01 sec)
+mysql> tched: 2  Changed: 2  Warnings: 0
+mysql>
+mysql> SELECT COUNT(*) AS COUNT FROM DEPARTMENTS GROUP BY FIRST_NAME ORDERBY COUNT DESC;
+mysql> 064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'O
+mysql> COUNT DESC' at line 1
+mysql> SELECT COUNT(*) AS COUNT FROM DEPARTMENTS GROUP BY FIRST_NAME ORDERBY COUNT DESC;
+mysql> SELECT * FROM DEPARTMENTS;
++----+------------+-------------+-------------+------------+----------+------------+----------------+
+| ID | FIRST_NAME | MIDDLE_NAME | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+-------------+------------+----------+------------+----------------+
+|  3 | MECHANICAL | NULL        | ENGINEERING | 2002-10-02 | G.C_BOSE | MALE       |            120 |
+|  5 | ELECTRONIC | NULL        | ENGINEERING | 2006-12-05 | G.C_BOSE | MALE       |            200 |
+|  6 | ELECTRONIC | NULL        | UNKNOWN     | 2006-12-05 | G.C_BOSE | MALE       |            200 |
+|  7 | MECHANICAL | NULL        | ENGINEERING | 2002-10-02 | G.C_BOSE | MALE       |            120 |
+|  8 | ELECTRICAL | NULL        | ENGINEERING | 2006-12-15 | G.C_BOSE | FEMALE     |             50 |
++----+------------+-------------+-------------+------------+----------+------------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> UPDATE DEPARTMENTS SET HOD="G.C_BOSE", TOTAL_STUDENTS=250 WHERE FIRST_NAME = "MECHANICAL";
+Query OK, 2 rows affected (0.01 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> SELECT COUNT(*) AS COUNT FROM DEPARTMENTS GROUP BY FIRST_NAME ORDERBY COUNT DESC;
+ERROR 1INSERT INTO DEPARTMENTS SET HOD="G.C_BOSE", TOTAL_STUDENTS=250 WHERE FIRST_NAME = "MECHANICAL";TS SET HOD="G.C_BOSE", TOTAL_STUDENTS=250 WHER
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE FIRST_NAME = "MECHANICAL"' at line 1----------+----------+---
+mysql> --+----------------+
+mysql> FIRST_NAME | MIDDLE_NAME | LASTNAME    | DOE        | HOD      | HO
+mysql> R | TOTAL_STUDENTS |
+mysql> -----------+-------------+-------------+------------+----------+---
+mysql> --+----------------+
+mysql> MECHANICAL | NULL        | ENGINEERING | 2002-10-02 | G.C_BOSE | MA
+mysql>   |            250 |
+mysql> ELECTRONIC | NULL        | ENGINEERING | 2006-12-05 | G.C_BOSE | MA
+mysql>   |            200 |
+mysql> ELECTRONIC | NULL        | UNKNOWN     | 2006-12-05 | G.C_BOSE | MA
+mysql>   |            200 |
+mysql> MECHANICAL | NULL        | ENGINEERING | 2002-10-02 | G.C_BOSE | MA
+mysql>   |            250 |
+mysql> ELECTRICAL | NULL        | ENGINEERING | 2006-12-15 | G.C_BOSE | FE
+mysql>   |             50 |
+mysql> -----------+-------------+-------------+------------+----------+---
+mysql> --+----------------+
+mysql> in set (0.00 sec)
+mysql>
+mysql> INSERT INTO DEPARTMENTS SET HOD="G.C_BOSE", TOTAL_STUDENTS=250 WHER
+mysql> _NAME = "MECHANICAL";
+mysql> 064 (42000): You have an error in your SQL syntax; check the manual
+mysql> orresponds to your MySQL server version for the right syntax to use
+mysql> WHERE FIRST_NAME = "MECHANICAL"' at line 1
+mysql> INSERT INTO DEPARTMENTS SET HOD="G.C_BOSE", TOTAL_STUDENTS=250 WHER
+mysql> _NAME = "MECHANICAL";
+mysql> INSERT INTO DEPARTMENTS SET HOD="G.C_BOSE", TOTAL_STUDENTS=250
+    -> INSERT INTO DEPARTMENTS SET HOD="G.C_BOSE", TOTAL_STUDENTS=250;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSERT INTO DEPARTMENTS SET HOD="G.C_BOSE", TOTAL_STUDENTS=250' at line 2
+mysql> INSERT INTO DEPARTMENTS SET HOD="G.C_BOSE", TOTAL_STUDENTS=250;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM DEPARTMENTS;
++----+------------+-------------+-------------+------------+----------+------------+----------------+
+| ID | FIRST_NAME | MIDDLE_NAME | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+-------------+------------+----------+------------+----------------+
+|  3 | MECHANICAL | NULL        | ENGINEERING | 2002-10-02 | G.C_BOSE | MALE       |            250 |
+|  5 | ELECTRONIC | NULL        | ENGINEERING | 2006-12-05 | G.C_BOSE | MALE       |            200 |
+|  6 | ELECTRONIC | NULL        | UNKNOWN     | 2006-12-05 | G.C_BOSE | MALE       |            200 |
+|  7 | MECHANICAL | NULL        | ENGINEERING | 2002-10-02 | G.C_BOSE | MALE       |            250 |
+|  8 | ELECTRICAL | NULL        | ENGINEERING | 2006-12-15 | G.C_BOSE | FEMALE     |             50 |
+| 11 | NULL       | NULL        | UNKNOWN     | NULL       | G.C_BOSE | MALE       |            250 |
++----+------------+-------------+-------------+------------+----------+------------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> INSERT INTO DEPARTMENTS SET HOD="ABCDE", TOTAL_STUDENTS=300,FIRST_NAME = "MECHANICAL";
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM DEPARTMENTS;
++----+------------+-------------+-------------+------------+----------+------------+----------------+
+| ID | FIRST_NAME | MIDDLE_NAME | LASTNAME    | DOE        | HOD      | HOD_GENDER | TOTAL_STUDENTS |
++----+------------+-------------+-------------+------------+----------+------------+----------------+
+|  3 | MECHANICAL | NULL        | ENGINEERING | 2002-10-02 | G.C_BOSE | MALE       |            250 |
+|  5 | ELECTRONIC | NULL        | ENGINEERING | 2006-12-05 | G.C_BOSE | MALE       |            200 |
+|  6 | ELECTRONIC | NULL        | UNKNOWN     | 2006-12-05 | G.C_BOSE | MALE       |            200 |
+|  7 | MECHANICAL | NULL        | ENGINEERING | 2002-10-02 | G.C_BOSE | MALE       |            250 |
+|  8 | ELECTRICAL | NULL        | ENGINEERING | 2006-12-15 | G.C_BOSE | FEMALE     |             50 |
+| 11 | NULL       | NULL        | UNKNOWN     | NULL       | G.C_BOSE | MALE       |            250 |
+| 12 | MECHANICAL | NULL        | UNKNOWN     | NULL       | ABCDE    | MALE       |            300 |
++----+------------+-------------+-------------+------------+----------+------------+----------------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT COUNT(*) AS COUNT FROM DEPARTMENTS GROUP BY FIRST_NAME ORDERBY COUNT DESC;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ORDERBY COUNT DESC' at line 1
+mysql> SELECT COUNT(*) AS COUNT FROM DEPARTMENTS GROUP BY FIRST_NAME ORDER BY COUNT DESC;
++-------+
+| COUNT |
++-------+
+|     3 |
+|     2 |
+|     1 |
+|     1 |
++-------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT COUNT(*) AS COUNT FROM DEPARTMENTS GROUP BY LAST_NAME ORDER BY COUNT DESC;
+ERROR 1054 (42S22): Unknown column 'LAST_NAME' in 'group statement'
+mysql> SELECT COUNT(*) AS COUNT FROM DEPARTMENTS GROUP BY LASTNAME ORDER BY COUNT DESC;
++-------+
+| COUNT |
++-------+
+|     4 |
+|     3 |
++-------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT MIN(TOTAL_STUDENTS) FROM DEPARTMENTS;
++---------------------+
+| MIN(TOTAL_STUDENTS) |
++---------------------+
+|                  50 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT MAX(TOTAL_STUDENTS) FROM DEPARTMENTS;
++---------------------+
+| MAX(TOTAL_STUDENTS) |
++---------------------+
+|                 300 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> (FIRSTNAME, LASTNAME, DOE, HOD, HOD_GENDER, TOTAL_STUDENTS)(FIRSTNAME, LASTNAME, DOE, HOD, HOD_GENDER, TOTAL_STUDENTS
